@@ -1,0 +1,11 @@
+{
+  "project": "PedidoSys",
+  "repository": "https://github.com/luisneto98/PedidoSys-Web.git",
+  "endpointDev": "http://localhost:3001",
+  "endpointProd": "",
+  "dockerImage": "waproject/pedido-sys",
+  "dockerCredentials": "",
+  "sentryDsn": "",
+  "confirmed": true,
+  "slug": "pedido-sys"
+}
