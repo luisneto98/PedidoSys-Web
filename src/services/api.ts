@@ -2,23 +2,23 @@ import axios, { AxiosError, AxiosResponse, Method } from 'axios';
 import ApiError from 'errors/api';
 import { apiRequestFormatter } from 'formatters/apiRequest';
 import * as Rx from 'rxjs';
+import {
+  catchError,
+  combineLatest,
+  distinctUntilChanged,
+  filter,
+  first,
+  map,
+  skip,
+  startWith,
+  switchMap,
+  tap
+} from 'rxjs/operators';
 
 import { API_ENDPOINT } from '../settings';
 import { apiResponseFormatter } from './../formatters/apiResponse';
 import authService from './auth';
 import tokenService, { TokenService } from './token';
-import {
-  filter,
-  combineLatest,
-  map,
-  first,
-  switchMap,
-  tap,
-  startWith,
-  distinctUntilChanged,
-  catchError,
-  skip
-} from 'rxjs/operators';
 
 export class ApiService {
   constructor(private apiEndpoint: string, private tokenService: TokenService) {}
@@ -70,6 +70,7 @@ export class ApiService {
         return { Authorization: `Bearer ${token}` };
       }),
       switchMap(headers => {
+        console.log('teste', this.apiEndpoint);
         return axios.request({
           baseURL: this.apiEndpoint,
           url,
